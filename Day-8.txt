@@ -1,0 +1,1174 @@
+Day-8 (Exercise):
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q1.Write a program to insert an element at the end of the linked list. Get the values continuously from the user until the user enters a negative value.
+
+
+
+Format:
+
+Input:
+
+The input should be numbers (until user enters a negative value).
+
+Output:
+
+The output should be the list elements in separate lines.
+
+
+
+Example:
+
+Input:
+
+1
+
+2
+
+3
+
+4
+
+-1
+
+Output:
+
+1
+
+2
+
+3
+
+4
+
+
+Case 1
+
+
+Input (stdin)
+1
+2
+3
+4
+-1
+
+Output (stdout)
+1
+2
+3
+4
+
+Case 2
+Input (stdin)
+1
+10
+2
+20
+3
+-1
+
+Output (stdout)
+1
+10
+2
+20
+3
+
+Solution:
+import java.util.*;
+class LinkedList
+{
+    Node head;
+    static class Node{
+        int data;
+        Node next;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public LinkedList append(LinkedList list,int data)
+    {
+        Node newnode=new Node(data);
+        Node temp=head;
+        if(list.head==null)
+            list.head=newnode;
+        else
+        {
+            while(temp.next!=null)
+                temp=temp.next;
+            temp.next=newnode;
+        }
+        return list;
+    }
+    public void display()
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+    
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		LinkedList list=new LinkedList();
+		int data;
+		do
+		{
+		    data=s.nextInt();
+		    if(data>=0)
+		        list=list.append(list,data);
+		}while(data>=0);
+		list.display();
+		
+	}
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q2.Write a program to delete an element at the beginning of the linked list. Get the values continuously from the user until the user enters a negative value.
+
+
+
+Format:
+
+Input:
+
+The input should be numbers (until user enters a negative value).
+
+Output:
+
+The output should be the list of numbers in separate lines.
+
+
+
+Example:
+
+Input:
+
+1
+
+2
+
+3
+
+4
+
+-1
+
+Output:
+
+2
+
+3
+
+4
+
+
+Case 1
+Case 2
+Case 3
+Input (stdin)
+1
+2
+3
+4
+-10
+
+Output (stdout)
+2
+3
+4
+
+
+
+Input (stdin)
+5
+50
+6
+60
+-10
+
+Output (stdout)
+50
+6
+60
+
+Input (stdin)
+10
+20
+30
+40
+50
+60
+-1
+
+Output (stdout)
+20
+30
+40
+50
+60
+
+Code Solution:
+import java.util.*;
+class LinkedList
+{
+    Node head;
+    static class Node{
+        int data;
+        Node next;
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public LinkedList append(LinkedList list,int data)
+    {
+        Node newnode=new Node(data);
+        Node temp=head;
+        if(list.head==null)
+            list.head=newnode;
+        else
+        {
+            while(temp.next!=null)
+                temp=temp.next;
+            temp.next=newnode;
+        }
+        return list;
+    }
+    public void display()
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+    public void delete()
+    {
+        Node temp=head;
+        head=temp.next;
+        temp.next=null;
+    }
+    
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		LinkedList list=new LinkedList();
+		int data;
+		do
+		{
+		    data=s.nextInt();
+		    if(data>=0)
+		        list=list.append(list,data);
+		}while(data>=0);
+		list.delete();
+		list.display();
+		
+	}
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3.Stack using linked list - Insertion
+Write a Program to implement the stack using a linked list.
+
+
+
+Example:
+
+Input:
+
+1
+
+2
+
+3
+
+4
+
+-1
+
+Output:
+
+4 3 2 1
+
+
+Case 1
+Case 2
+Input (stdin)
+1
+2
+3
+4
+-1
+
+Output (stdout)
+4 3 2 1
+
+
+Input (stdin)
+1
+2
+3
+-1
+
+Output (stdout)
+3 2 1
+
+
+Solution:
+import java.util.*;
+import static java.lang.System.exit;
+
+class StackUsingLinkedlist {
+    private class Node {
+ 
+        int data;
+        Node link;
+    }
+    Node top;
+    StackUsingLinkedlist()
+    {
+        this.top = null;
+    }
+    
+    public void push(int x) 
+    {
+        Node temp = new Node();
+
+        if (temp == null) {
+            System.out.print("\nHeap Overflow");
+            return;
+        }
+        temp.data = x;
+        temp.link = top;
+        top = temp;
+    }
+    public boolean isEmpty()
+    {
+        return top == null;
+    }
+
+    public int peek()
+    {
+        if (!isEmpty()) {
+            return top.data;
+        }
+        else {
+            System.out.println("Stack is empty");
+            return -1;
+        }
+    }
+
+    public void pop()
+    {
+        if (top == null) {
+            System.out.print("\nStack Underflow");
+            return;
+        }
+        top = (top).link;
+    }
+ 
+    public void display()
+    {
+        if (top == null) {
+            System.out.printf("\nStack Underflow");
+            exit(1);
+        }
+        else {
+            Node temp = top;
+            while (temp != null) {
+                System.out.printf("%d ", temp.data);
+                temp = temp.link;
+            }
+        }
+    }
+}
+class Main {
+    public static void main(String[] args)
+    {
+        StackUsingLinkedlist obj = new StackUsingLinkedlist();
+        Scanner sc=new Scanner(System.in);
+        while(true){
+            int ele=sc.nextInt();
+            if(ele>=0)
+                obj.push(ele);
+            else
+                break;
+        }
+        obj.display();
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q4.Write a program to reverse the order of a queue. If the queue doesn't have a value, then print "Queue is empty".
+
+
+
+Format:
+
+Input:
+
+The input consists of a list of integers, a negative value indicates the end of a queue.
+
+Output:
+
+Print the reversed queue.
+
+
+
+Example:
+
+Input:
+
+1
+
+2
+
+3
+
+4
+
+-1
+
+Output:
+
+Before reversing:
+
+1 2 3 4
+
+After reversing:
+
+4 3 2 1
+
+
+Case 1
+Case 2
+Input (stdin)
+1
+2
+3
+4
+-1
+
+Output (stdout)
+Before reversing:
+1 2 3 4
+After reversing:
+4 3 2 1
+
+Input (stdin)
+1
+2
+-1
+
+Output (stdout)
+Before reversing:
+1 2
+After reversing:
+2 1
+
+
+Solution:
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+
+	public static void main(String args[]) {
+
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+
+		Queue<Integer> q = new LinkedList<>();
+		while (input >= 0) {
+
+			q.add(input);
+			input = sc.nextInt();
+		}
+      
+      if (q.size() == 0) {
+
+			System.out.println("Queue is empty");
+			return;
+		}
+
+		System.out.println("Before reversing:");
+
+		for (int i : q)
+			System.out.print(i + " ");
+
+		System.out.println();
+		reverse(q);
+
+		System.out.println("After reversing:");
+
+		for (int i : q)
+			System.out.print(i + " ");
+
+	}
+
+	public static void reverse(Queue<Integer> q) {
+
+		Stack<Integer> st = new Stack<>();
+
+		while (!q.isEmpty())
+			st.push(q.remove());
+
+		while (!st.isEmpty())
+			q.add(st.pop());
+
+	}
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q5.Given a string of balanced expression. Find whether it contains a redundant parenthesis or not. The redundant parenthesis is the expression surrounded by unnecessary or multiple brackets. Print ‘Yes’ if it's redundant, else ‘No’.
+
+
+
+Format:
+
+Input:
+
+The input consists of expression.
+
+Output:
+
+The output consists of the result.
+
+
+
+Example:
+
+Input:
+
+((a+b))
+
+Output:
+
+Yes
+
+
+Case 1
+
+Input (stdin)
+((a+b))
+
+Output (stdout)
+Yes
+
+Case 2
+Input (stdin)
+(a+b*(c-d))
+
+Output (stdout)
+No
+
+Solution:
+import java.util.*;
+
+public class Main {
+  
+    static boolean checkRedundancy(String s) {
+        Stack<Character> st = new Stack<>();
+        char[] str = s.toCharArray();
+
+        for (char ch : str) {
+            if (ch == ')') {
+                char top = st.pop();
+                boolean hasOperator = false;
+
+                while (top != '(') {
+                    if (top == '+' || top == '-' || top == '*' || top == '/') {
+                        hasOperator = true;
+                    }
+                    top = st.pop();
+                }
+
+                // If no operator found, it's redundant
+                if (!hasOperator) {
+                    return true;
+                }
+            } else {
+                st.push(ch);
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String str = sc.nextLine();
+        System.out.println(checkRedundancy(str) ? "Yes" : "No");
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q6.Write a program to sum up all the elements in a tree.
+
+
+
+Example:
+
+Input:
+
+6
+
+3
+
+1
+
+4
+
+2
+
+-1
+
+Output:
+
+Sum of all nodes are 16
+
+
+Case 1
+Case 2
+Input (stdin)
+6
+3
+1
+4
+2
+-1
+
+Output (stdout)
+Sum of all nodes are 16
+
+
+Input (stdin)
+1
+2
+3
+4
+5
+-1
+
+Output (stdout)
+Sum of all nodes are 15
+
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+      	int input = sc.nextInt();
+      
+      	while(input >= 0) {
+         
+          root = insert(root, input);
+          input = sc.nextInt();
+        }
+      
+      	int ans = sum(root);
+      	System.out.println("Sum of all nodes are " + ans);
+	}
+
+	static class Node {
+
+		int data;
+		Node left, right;
+
+		Node(int data) {
+
+			this.data = data;
+		}
+	}
+
+	static Node root = null;
+
+	static int sum(Node root) {
+
+		if(root == null)
+          return 0;
+      
+      	int leftSubtree = sum(root.left);
+      	int rightSubtree = sum(root.right);
+      
+      	return root.data + leftSubtree + rightSubtree;
+	}
+
+	static Node insert(Node root, int data) {
+
+		if (root == null)
+			root = new Node(data);
+
+		else if (root.data < data)
+			root.right = insert(root.right, data);
+
+		else
+			root.left = insert(root.left, data);
+
+		return root;
+	}
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q7.
+Odd occurring element
+Given an array of integers where every element appears an even number of times except one element, which appears an odd number of times. Write a program to find that odd occurring element in O(log n) time. The equal elements must appear in pairs in the array, but there cannot be more than two consecutive occurrences of an element.
+
+
+
+Example 1:
+
+Input:
+
+3
+
+2 3 2
+
+Output:
+
+2
+
+Explanation:
+
+It doesn't have equal elements appear in pairs
+
+
+
+Example 2:
+
+Input:
+
+7
+
+1 1 2 2 2 3 3
+
+Output:
+
+2
+
+Explanation:
+
+It contains three consecutive instances of an element.
+
+
+
+Example 3:
+
+Input:
+
+5
+
+2 2 3 1 1
+
+Output:
+
+3
+
+Explanation:
+
+It contains two consecutive instances of two elements and one odd number of times.
+
+
+Case 1
+
+Input (stdin)
+5
+2 2 3 1 1
+
+Output (stdout)
+3
+
+Case 2
+Input (stdin)
+11
+2 2 3 3 2 2 4 4 3 1 1
+
+Output (stdout)
+3
+
+Solution:
+import java.util.Scanner;
+class Main
+{
+  static int odd_num(int arr[],int low,int high)
+  {
+      if(low==high)
+          return low;
+      int mid=(low+high)/2;
+      if(mid%2==1)
+      {
+          if(arr[mid]==arr[mid-1])
+              return odd_num(arr,mid+1,high);
+          else
+              return odd_num(arr,low,mid);
+      }
+      else
+      {
+          if(arr[mid]==arr[mid+1])
+              return odd_num(arr,mid+2,high);
+          else
+          return odd_num(arr,low,mid);
+      }
+  }
+  public static void main(String args[])
+  {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int arr[] = new int[n];
+    for(int i=0;i<n;i++)
+      arr[i] = sc.nextInt();
+    System.out.println(arr[odd_num(arr,0,n-1)]);
+  }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q8.Write a program to implement a Binary searching algorithm for searching an element in an array.
+
+
+
+Example:
+
+Input:
+
+4
+
+23
+
+34
+
+43
+
+54
+
+23
+
+Output:
+
+23 is present at location 1
+
+
+
+
+Case 1
+Case 2
+Input (stdin)
+6
+11
+15
+26
+38
+9
+10
+20
+
+Output (stdout)
+Not found
+
+
+
+
+Input (stdin)
+4
+23
+34
+43
+54
+23
+
+Output (stdout)
+23 is present at location 1
+
+
+Solution:
+import java.util.Scanner;
+class Main 
+{
+	int binarySearch(int arr[], int l, int r, int x)
+	{
+		if (r >= l) {
+			int mid = l + (r - l) / 2;
+
+			if (arr[mid] == x)
+				return mid;
+
+			if (arr[mid] > x)
+				return binarySearch(arr, l, mid - 1, x);
+
+			return binarySearch(arr, mid + 1, r, x);
+		}
+		return -1;
+	}
+
+	public static void main(String args[])
+	{
+        Scanner sc = new Scanner(System.in) ;
+        int n = sc.nextInt();
+		Main ob = new Main();
+		int arr[] = new int[n];
+      	for(int i = 0 ; i < n ; i++)
+          arr[i] = sc.nextInt();
+		int x = sc.nextInt();
+		int result = ob.binarySearch(arr, 0, n-1, x);
+		if (result == -1)
+			System.out.println("Not found");
+		else
+			System.out.println(x + " is present at location " + (result+1));
+	}
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q9.Move all zeroes to end
+Write a program to move all zeroes to the end of a given integer.
+
+
+
+Format:
+
+Input:
+
+The first line of input contains a number of test cases T. For each test case, the first line of input contains a single integer of 0's and 1's.
+
+Output:
+
+The output contains a single line integer value.
+
+
+
+Constraints:
+
+1 ≤ T ≤ 10
+
+1 ≤ N ≤ 109
+
+
+
+Example:
+
+Input:
+
+2
+
+1010101
+
+0000111
+
+Output:
+
+1111000
+
+1110000
+
+
+Case 1
+Case 2
+Input (stdin)
+2
+1010101
+1000111
+
+Output (stdout)
+1111000
+1111000
+
+
+
+Input (stdin)
+1
+1100110
+
+Output (stdout)
+1111000
+
+
+Solution:
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        int i;
+        for(i = 1; i <= t; i++)
+        {
+            int num, r, count = 0, ans = 0;
+            num = sc.nextInt();
+            while(num != 0) 
+            {
+                r = num % 10;
+                if(r==0)
+                {
+                    count++;
+                }
+                else
+                {
+                    ans=(ans*10)+r;
+                }
+                num /= 10;
+            }
+            System.out.print(ans);
+            for(int j=0;j<count;j++)
+            {
+                System.out.print("0");
+            }  
+            System.out.println();
+            
+        }
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q10.Write a program to implement a Selection Sort algorithm for sorting the elements of an array.
+
+
+
+Format:
+
+Input:
+
+The first line of the input denotes the number of test cases 'T'. The first line of the test case is the size of an array and the second line consists of an array of elements.
+
+Output:
+
+The sorted array in ascending order is displayed to the user.
+
+
+
+Constraints:
+
+1 <= T <= 50
+
+1 <= N <= 1000
+
+1 <= arr[i] <= 1000
+
+
+
+Example:
+
+Input:
+
+2
+
+5
+
+4 1 3 9 7
+
+10
+
+10 9 8 7 6 5 4 3 2 1
+
+Output:
+
+1 3 4 7 9
+
+1 2 3 4 5 6 7 8 9 10
+
+Explanation : 
+
+Sorted array is 1,3,4,7,9 for the test case 1.
+
+
+Case 1
+Case 2
+Input (stdin)
+2
+5
+4 1 3 9 7
+10
+10 9 8 7 6 5 4 3 2 1
+
+Output (stdout)
+1 3 4 7 9
+1 2 3 4 5 6 7 8 9 10
+
+
+Solution:
+
+import java.util.*;
+
+
+class Main
+{
+	void Main(int arr[])
+	{
+		int n = arr.length;
+		selectionSort obj = new selectionSort();
+		for(int i=n-1; i>=0; i--)
+		{
+			int j = obj.select(arr, i);
+			
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}	
+	}
+	
+	void printArray(int arr[])
+	{
+		int n = arr.length;
+		for(int i=0;i<n;i++)
+			System.out.print(arr[i]+" ");
+		System.out.println();
+	}
+	
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		Main ss = new Main();
+		int t = sc.nextInt();
+		while(t>0)
+		{
+			int n = sc.nextInt();
+			int arr[] = new int[n]; 
+			for(int i=0;i<n;i++)
+			{
+				arr[i] = sc.nextInt();
+			}
+			ss.Main(arr);
+			ss.printArray(arr);
+			t--;
+		}
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+

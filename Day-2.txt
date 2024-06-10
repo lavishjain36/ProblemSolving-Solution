@@ -1,0 +1,353 @@
+Day-2(Pattern programming):
+Pyramid Patterns
+Alphabet Patterns
+Number Patterns
+Triangle Patterns
+Number Systems
+Fibonacci 
+Palindromic 
+Strong Number 
+ArmStrong Number
+Factorial etc.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q1.WAP to print following pattern.
+Input:
+5
+5
+
+Output:
+11111
+22222
+33333
+44444
+55555
+
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int rows = scanner.nextInt();
+        int columns = scanner.nextInt();
+
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= columns; j++) {
+                System.out.print(i);
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q2.WAP to print following pattern.
+Input:
+5
+5
+
+Output:
+10101
+01010
+10101
+01010
+10101
+
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int rows = scanner.nextInt();
+        int columns = scanner.nextInt();
+
+        for (int i = 1; i <= rows; i++) {
+            int k = (i % 2 == 0) ? 0 : 1;
+            for (int j = 1; j <= columns; j++) {
+                System.out.print(k);
+                k = (k == 1) ? 0 : 1;
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3.WAP to print following pattern.
+Input:5
+Output:
+*****
+****
+***
+**
+*
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int m = scanner.nextInt();
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = m; j >= i; j--) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q4.WAP to print following pattern.
+Input:5
+Output:
+ABCDE
+FGHIJ
+KLMNO
+PQRST
+UVWXY
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt();
+        int k = 65; // ASCII value of 'A'
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                System.out.print((char) k);
+                k++;
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q5.WAP to print following pattern.
+Input:
+5
+Output:
+*****
+****
+***
+**
+*
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        for (int i = n; i > 0; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q6.WAP to print following pattern.
+Input:
+5
+5
+
+Output:
+*****
+*****
+*****
+*****
+*****
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int rows = scanner.nextInt();
+        int columns = scanner.nextInt();
+
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= columns; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q7.WAP to print following pattern.
+Input:5
+Output:
+12345
+12345
+12345
+12345
+12345
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q8.WAP to print following pattern.
+Input:5
+Output:
+1*2*3
+1*2*3
+1*2*3
+1*2*3
+1*2*3
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            int k = 1;
+            for (int j = 1; j <= n; j++) {
+                if (j % 2 == 1) {
+                    System.out.print(k);
+                    k++;
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q9.Write a program to check whether a given number is prime or not.
+Input:17
+Output:
+17 is a prime number.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = scanner.nextInt();
+
+        boolean isPrime = true;
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) {
+            System.out.println(n + " is a prime number.");
+        } else {
+            System.out.println(n + " is not a prime number.");
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Q10.Write a program to check whether a given number is a Harshad number or not.
+
+Input: A single integer representing the number to be checked.
+
+Output: Print "Harshad number" if the input number is a Harshad number, otherwise print "Not a Harshad number
+
+Hint:
+A Harshad number  is an integer that is divisible by the sum of its digits. 
+For example, 18 is a Harshad number because 1 + 8 = 9 and 18 is divisible by 9.
+
+
+Solution:
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int number = scanner.nextInt();
+
+        int sum = 0;
+        int temp = number;
+        while (temp != 0) {
+            sum += temp % 10;
+            temp /= 10;
+        }
+
+        if (number % sum == 0) {
+            System.out.println("Harshad number");
+        } else {
+            System.out.println("Not a Harshad number");
+        }
+
+        scanner.close();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------

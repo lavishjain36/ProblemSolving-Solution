@@ -1,0 +1,509 @@
+Day-4(Advance Concept):
+Recursion
+Searching & Sorting technique using Collection Framework
+Hashing Techniques
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q1.Write a program to compute the factorial of a number using recursion.
+
+
+Input Format:
+
+Input consists of an integer.
+
+
+
+Output Format:
+
+Print the factorial of the given number
+
+Refer sample input and output for formatting specifications. 
+
+
+
+Sample Input:
+
+5
+
+
+
+Sample Output:
+
+The factorial of 5 is 120
+
+Case 1
+Input (stdin)
+5
+
+Output (stdout)
+The factorial of 5 is 120
+import java.util.Scanner;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner s=new Scanner(System.in);
+      int str=s.nextInt();
+      int res=fact(str);
+      System.out.println("The factorial of "+str+" is "+res);
+    }
+  static int fact(int n)
+  {
+    if(n==0)
+    {
+      return 1;
+    }else
+    {
+      return n*fact(n-1);
+    }
+  }
+}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q2.Write a program to find the nth term in the Fibonacci series using recursion. Note that the first 2 terms in the Fibonacci Series are 0 and 1.
+Input and Output Format: 
+
+Input consists of an integer.
+
+Refer sample input and output for formatting specifications.
+
+All text in bold corresponds to input and the rest corresponds to output.
+
+ 
+
+Sample Input and Output:
+
+4
+
+
+
+Sample Output:
+
+The term 4 in the fibonacci series is 2
+
+Case 1
+Input (stdin)
+4
+
+Output (stdout)
+The term 4 in the fibonacci series is 2
+
+Solution:
+import java.util.Scanner;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner s=new Scanner(System.in);
+          int n=s.nextInt();
+      int res=fibo(n);
+      System.out.println("The term 4 in the fibonacci series is "+res);
+    }
+  static int fibo(int n)
+  {
+    if(n==1)
+    {
+      return 0;
+    }else if(n==2)
+    {
+      return 1;
+    }else
+    {
+      return fibo(n-1)+fibo(n-2);
+    }
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3.
+Write a program to compute a^n (a power n) using recursion.
+Input and Output Format: 
+
+Input consists of an integer.
+
+Refer sample input and output for formatting specifications.
+
+ 
+
+Sample Input and Output:
+
+2
+
+8
+
+
+
+Sample Output:
+
+The value of 2 power 8 is 256
+
+Case 1
+Input (stdin)
+2
+8
+
+Output (stdout)
+The value of 2 power 8 is 256
+
+Solution:
+import java.util.Scanner;
+class Main
+{
+    public static void main(String args[])
+    {
+       Scanner s=new Scanner(System.in);
+      int a=s.nextInt();
+      int n=s.nextInt();
+      int res=power(a,n);
+      System.out.println("The value of "+a+" power "+n+" is "+res);
+    }
+  static int power(int a,int n)
+  {
+    if(n==0)
+    {
+      return 1;
+    }else if(n==1)
+    {
+      return a;
+    }else if(n%2==1)
+    {
+     return a*power(a,n-1);
+    }else
+    {
+      return power(a*a,n/2);
+    }
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q4.Write a program to find the sum of digits in a number using recursion.
+
+
+Input Format:
+
+Input consists of a non - negative integer.
+
+
+
+Output Format:
+
+Print the sum of digits of a given number.
+
+Refer sample input and output for formatting specifications.
+
+ 
+
+Sample Input:
+
+432
+
+
+
+Sample Output:
+
+The sum of digits in 432 is 9
+
+Case 1
+Input (stdin)
+432
+
+Output (stdout)
+The sum of digits in 432 is 9
+
+solution:
+import java.util.Scanner;
+class Main
+{
+    public static void main(String args[])
+    {
+		Scanner s=new Scanner(System.in);
+      int n=s.nextInt();
+      int res=digit(n);
+      System.out.println("The sum of digits in "+n+" is "+res);
+    }
+  static int digit(int n)
+  {
+    if(n==0)
+    {
+      return n;
+    }else
+    {
+      return (n%10)+digit(n/10);
+    }
+  }
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q5.Write a program to find the number of digits in a number using recursion.
+
+Input Format:
+Input consists of a non - negative integer.
+
+
+
+Output Format:
+
+Print number of digits of a given number
+
+Refer sample input and output for formatting specifications.
+
+ 
+Sample Input:
+432
+
+
+
+Sample Output:
+
+The number of digits in 432 is 3
+
+
+
+
+Case 1
+Input (stdin)
+432
+
+Output (stdout)
+The number of digits in 432 is 3
+
+Solution:
+import java.util.Scanner;
+class Main
+{
+  static int c=0;
+    public static void main(String args[])
+    {
+       Scanner s=new Scanner(System.in);
+      int n=s.nextInt();
+      int res=digit(n);
+      System.out.println("The number of digits in "+n+" is "+res);
+    }
+  static int digit(int n)
+  {
+    if(n==0)
+    {
+      return c;
+    }else
+    {
+      digit(n/10);
+      return ++c;
+    }
+}
+}
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q6.Write a Program to peform Binary Search using ArrayList Collection.
+
+Input:
+6
+10
+20
+30
+40
+50
+60
+40
+
+Output:
+3
+
+Solution:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> list = new ArrayList<>();
+
+        // Input
+        System.out.print("Enter the size of the ArrayList: ");
+        int size = scanner.nextInt();
+        System.out.println("Enter the sorted elements of the ArrayList:");
+        for (int i = 0; i < size; i++) {
+            list.add(scanner.nextInt());
+        }
+
+        // Input element to search
+        System.out.print("Enter the element to search: ");
+        int element = scanner.nextInt();
+
+        // Binary search
+        int index = binarySearch(list, element);
+
+        // Output
+        if (index >= 0) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found");
+        }
+
+        scanner.close();
+    }
+
+    // Binary search implementation
+    public static int binarySearch(ArrayList<Integer> list, int element) {
+        int left = 0;
+        int right = list.size() - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (list.get(mid) == element) {
+                return mid;
+            } else if (list.get(mid) < element) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1; // Element not found
+    }
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q7.You are given a list of integers. Your task is to find the sum of all the elements in the list.
+input:
+5
+1 2 3 4 5
+Ouptut:
+Sum of the integers: 15
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> nums = new ArrayList<>();
+        int n = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            nums.add(scanner.nextInt());
+        }
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        System.out.println("Sum of the integers: " + sum);
+        scanner.close();
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q8.You are given a list of strings. Your task is to find the length of the longest string in the list.
+Input:
+5
+apple banana kiwi orange strawberry
+
+Output:
+Length of the longest string: 10
+
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> strings = new ArrayList<>();
+        int n = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            strings.add(scanner.next());
+        }
+        int maxLength = 0;
+        for (String str : strings) {
+            maxLength = Math.max(maxLength, str.length());
+        }
+        System.out.println("Length of the longest string: " + maxLength);
+        scanner.close();
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q9.You are given two lists of integers. Your task is to find the common elements present in both lists.
+Input:
+5
+1 2 3 4 5
+4
+4 5 6 7
+
+Output: [4, 5]
+
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        System.out.println("Enter the number of integers in list1:");
+        int n1 = scanner.nextInt();
+        System.out.println("Enter the integers in list1:");
+        for (int i = 0; i < n1; i++) {
+            list1.add(scanner.nextInt());
+        }
+        System.out.println("Enter the number of integers in list2:");
+        int n2 = scanner.nextInt();
+        System.out.println("Enter the integers in list2:");
+        for (int i = 0; i < n2; i++) {
+            list2.add(scanner.nextInt());
+        }
+        Set<Integer> set1 = new HashSet<>(list1);
+        Set<Integer> commonElements = new HashSet<>();
+        for (int num : list2) {
+            if (set1.contains(num)) {
+                commonElements.add(num);
+            }
+        }
+        System.out.println(commonElements);
+        scanner.close();
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q10.You are given a list of integers. Your task is to remove duplicates from the list while preserving the order of the elements
+Input:
+8
+1 2 3 2 4 5 3 6
+
+output:
+[1, 2, 3, 4, 5, 6]
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> nums = new ArrayList<>();
+        System.out.println("Enter the number of integers:");
+        int n = scanner.nextInt();
+        System.out.println("Enter the integers:");
+        for (int i = 0; i < n; i++) {
+            nums.add(scanner.nextInt());
+        }
+        Set<Integer> set = new LinkedHashSet<>(nums);
+        List<Integer> result = new ArrayList<>(set);
+        System.out.println("List after removing duplicates: " + result);
+        scanner.close();
+    }
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------

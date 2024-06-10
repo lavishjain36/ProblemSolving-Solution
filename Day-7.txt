@@ -1,0 +1,411 @@
+Day-7 & 8 (Collection framework):
+Collection Interface
+List Interface
+ArrayList Class
+LinkedList Class
+Vector Class
+Set Interface
+HashSet Class
+TreeSet Class
+LinkedHashSet Class
+Map Interface
+HashMap Class
+TreeMap Class
+LinkedHashMap Class
+Hashtable Class
+Queue Interface
+Priority Queue Class
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q1.ArrayList Class: Task Scheduler
+Charlie is managing his daily tasks and wants to schedule them using an ArrayList. Write a program that allows Charlie to add tasks to his schedule and 
+display them in the order they were added.
+
+
+
+Test Case-1
+Input:
+Study Code Eat Sleep 
+Output:
+Task schedule:
+Study
+Code
+Eat
+Sleep
+
+Test Case-2
+Input:
+Workout Cook Clean 
+Output:
+Task schedule:
+Workout
+Cook
+Clean
+
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> tasks = new ArrayList<>();
+        
+        while (scanner.hasNext()) {
+            String task = scanner.next();
+            if (task.equals("done")) break;
+            tasks.add(task);
+        }
+        
+        System.out.println("Task schedule:");
+        tasks.forEach(System.out::println);
+        
+        scanner.close();
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q2.Vector Class: Employee Payroll Calculator
+Problem:
+Emma is calculating employee payroll using a Vector. Write a program that allows Emma to enter employee salaries and displays the total payroll.
+
+
+
+Test Case-1
+
+Input:
+3000 4000 3500 -1
+Output:
+Total payroll: 10500.0
+
+
+Test Case-2
+Input:
+2500 2800 3200 2700 -1
+Output:
+Total payroll: 11200.0
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Vector<Double> salaries = new Vector<>();
+        
+        while (true) {
+            double salary = scanner.nextDouble();
+            if (salary == -1) break;
+            salaries.add(salary);
+        }
+        
+        double totalPayroll = salaries.stream().mapToDouble(Double::doubleValue).sum();
+        System.out.println("Total payroll: " + totalPayroll);
+        
+        scanner.close();
+    }
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3.In a theme park, there are different zones with unique visitor counts. Write a program that takes input for the visitor count of each zone using the
+Collection interface and calculates the total number of visitors.
+Test Case-1
+Input:
+100 150 200 250
+Output:
+Total visitors in the theme park: 700
+
+
+Test Case-2
+Input:
+50 75 100
+Output:
+Total visitors in the theme park: 225
+
+Solution:
+
+import java.util.*;
+
+public class VisitorCounter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Collection<Integer> visitorCounts = new ArrayList<>();
+
+        System.out.println("Enter the visitor counts for each zone:");
+        while (scanner.hasNextInt()) {
+            visitorCounts.add(scanner.nextInt());
+        }
+
+        int totalVisitors = visitorCounts.stream().mapToInt(Integer::intValue).sum();
+        System.out.println("Total visitors in the theme park: " + totalVisitors);
+
+        scanner.close();
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q4.Write a Java program to remove duplicates from an ArrayList.
+
+
+
+Test Case-1
+
+5
+1 2 3 2 1
+
+Solution:
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        Set<Integer> set = new LinkedHashSet<>(list);
+        list.clear();
+        list.addAll(set);
+        System.out.println(list);
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q5.Write a Java program to sort elements of an ArrayList in descending order.
+
+
+Test Case-1
+Input:
+5
+5 2 7 3 1
+
+Output:
+[7, 5, 3, 2, 1]
+
+Solution:
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        Collections.sort(list, Collections.reverseOrder());
+        System.out.println(list);
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q6.Write a Java program to find the maximum and minimum element in an ArrayList.
+
+
+
+Test Case-1
+Input:
+5
+5 2 7 3 1
+
+Output:
+Maximum: 7
+Minimum: 1
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        int max = Collections.max(list);
+        int min = Collections.min(list);
+        System.out.println("Maximum: " + max);
+        System.out.println("Minimum: " + min);
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q7.Write a Java program to check if an ArrayList contains a given element.
+
+
+Test Case-1
+Input:
+5
+5 2 7 3 1
+3
+
+Output:
+Element found
+
+
+Solution:
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        int target = scanner.nextInt();
+        if (list.contains(target)) {
+            System.out.println("Element found");
+        } else {
+            System.out.println("Element not found");
+        }
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q8.Write a Java program to count the occurrences of each element in an ArrayList and display the elements along with their frequencies.
+
+Input Format:
+
+The first line contains an integer n, the size of the ArrayList.
+The next line contains n space-separated integers representing the elements of the ArrayList.
+Output Format:
+
+Print each element of the ArrayList along with its frequency.
+
+Test Case-1
+7
+1 2 2 3 3 3 4
+
+Output:
+Element 1 occurs 1 time
+Element 2 occurs 2 times
+Element 3 occurs 3 times
+Element 4 occurs 1 time
+
+Solution:
+import java.util.*;
+
+public class ElementFrequency {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (Integer num : list) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            System.out.println("Element " + entry.getKey() + " occurs " + entry.getValue() + " times");
+        }
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q9.Write a Java program to find the index of the first occurrence of a specific element in an ArrayList.
+Input Format:
+
+The first line contains an integer n, the size of the ArrayList.
+The next line contains n space-separated integers representing the elements of the ArrayList.
+The third line contains an integer x, the element whose index needs to be found.
+Output Format:
+
+Print the index of the first occurrence of the specified element.
+
+Test Case-1
+Input:
+6
+1 2 2 3 3 3
+3
+
+Output:
+Index of first occurrence of element 3: 3
+
+
+
+Solution:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        int elementToFind = scanner.nextInt();
+        int index = list.indexOf(elementToFind);
+        System.out.println("Index of first occurrence of element " + elementToFind + ": " + index);
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q10.Write a Java program to get a portion of an ArrayList between two specified indices.
+Input Format:
+
+The first line contains an integer n, the size of the ArrayList.
+The next line contains n space-separated integers representing the elements of the ArrayList.
+The third line contains an integer start, the starting index (inclusive).
+The fourth line contains an integer end, the ending index (exclusive).
+Output Format:
+
+Print the portion of the ArrayList between the specified indices.
+Testcase-1
+Sample Input:
+5
+1 2 3 4 5
+1
+4
+Sample Output:
+
+Portion of ArrayList: [2, 3, 4]
+
+
+
+
+Solution:
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+        int start = scanner.nextInt();
+        int end = scanner.nextInt();
+        List<Integer> subList = list.subList(start, end);
+        System.out.println("Portion of ArrayList: " + subList);
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
